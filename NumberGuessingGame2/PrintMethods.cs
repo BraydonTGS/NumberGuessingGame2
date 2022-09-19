@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Drawing;
+
 namespace NumberGuessingGame2
 {
     public class PrintMethods
@@ -13,8 +15,30 @@ namespace NumberGuessingGame2
 
         }
 
-        public static void GameOver()
+        public static void GameOver(string response, double coins)
         {
+            if (response == "N")
+            {
+                Console.WriteLine(@" +-+-+-+-+ +-+-+-+-+
+ |G|a|m|e| |O|v|e|r|
+ +-+-+-+-+ +-+-+-+-+");
+                Console.WriteLine();
+                Console.Write("> Sounds Good! See you next time!");
+                Console.ReadKey();
+            }
+            else if (coins == 0)
+            {
+
+                Console.WriteLine(@" +-+-+-+-+ +-+-+-+-+
+ |G|a|m|e| |O|v|e|r|
+ +-+-+-+-+ +-+-+-+-+");
+                Console.WriteLine();
+                Console.Write("> OH NO! You are out of coins! ");
+                Console.ReadKey();
+
+            }
+
+
 
         }
     }

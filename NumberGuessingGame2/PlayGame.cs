@@ -32,6 +32,7 @@ namespace NumberGuessingGame2
             Console.Write("> Please Enter a Coin! ");
             Console.ReadLine();
             Console.WriteLine();
+            PrintMethods.PrintTitle();
 
             int random = RandomNumber.Next(Min, Max);
             Coins -= 1;
@@ -44,6 +45,7 @@ namespace NumberGuessingGame2
             Console.WriteLine();
             Console.Write($"> Please Enter a Number between {Min} and {Max}: ");
             UserGuess = int.Parse(Console.ReadLine());
+
 
             if (rnd > UserGuess)
             {
@@ -64,11 +66,7 @@ namespace NumberGuessingGame2
 
         public void Win()
         {
-            PrintMethods.PrintTitle();
-            Console.WriteLine($"> YOU WON THE GAME! Number of Guesses: {Guesses}");
-            Console.WriteLine();
-            Console.WriteLine($"> You have {Coins} coins left! ");
-            Console.WriteLine();
+            PrintMethods.YouWon(Guesses, Coins);
             PlayAgain();
 
         }
@@ -106,23 +104,13 @@ namespace NumberGuessingGame2
             else if (userResponse == "N")
             {
 
-                Console.WriteLine(@" +-+-+-+-+ +-+-+-+-+
- |G|a|m|e| |O|v|e|r|
- +-+-+-+-+ +-+-+-+-+");
-                Console.WriteLine();
-                Console.Write("> Sounds Good! See you next time!");
-                Console.ReadKey();
+                PrintMethods.GameOver(userResponse, Coins);
             }
 
             else if (Coins == 0)
             {
 
-                Console.WriteLine(@" +-+-+-+-+ +-+-+-+-+
- |G|a|m|e| |O|v|e|r|
- +-+-+-+-+ +-+-+-+-+");
-                Console.WriteLine();
-                Console.Write("> OH NO! You are out of coins! ");
-                Console.ReadKey();
+                PrintMethods.GameOver(userResponse, Coins);
 
             }
             else
