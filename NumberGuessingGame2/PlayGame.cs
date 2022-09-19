@@ -12,7 +12,7 @@ namespace NumberGuessingGame2
         private Random RandomNumber;
         private int UserGuess;
         private int Guesses;
-        private bool KeepPlaying;
+
 
         public PlayGame()
         {
@@ -21,7 +21,7 @@ namespace NumberGuessingGame2
             Coins = 4;
             RandomNumber = new Random();
             Guesses = 0;
-            KeepPlaying = true;
+
         }
 
         public void Start()
@@ -33,7 +33,6 @@ namespace NumberGuessingGame2
             Console.ReadLine();
             Console.WriteLine();
             PrintMethods.PrintTitle();
-
             int random = RandomNumber.Next(Min, Max);
             Coins -= 1;
             PlayRound(random);
@@ -46,18 +45,14 @@ namespace NumberGuessingGame2
             Console.Write($"> Please Enter a Number between {Min} and {Max}: ");
             UserGuess = int.Parse(Console.ReadLine());
 
-
             if (rnd > UserGuess)
             {
-
                 High(rnd);
-
             }
             else if (rnd < UserGuess)
             {
                 Low(rnd);
             }
-
             else
             {
                 Win();
@@ -73,18 +68,14 @@ namespace NumberGuessingGame2
 
         public void High(int rnd)
         {
-            PrintMethods.PrintTitle();
-            Console.WriteLine("> Too low, try again. ");
-            Console.WriteLine();
+            PrintMethods.High();
             Guesses++;
             PlayRound(rnd);
         }
 
         public void Low(int rnd)
         {
-            PrintMethods.PrintTitle();
-            Console.WriteLine("> Too high, try again. ");
-            Console.WriteLine();
+            PrintMethods.Low();
             Guesses++;
             PlayRound(rnd);
 
@@ -103,19 +94,16 @@ namespace NumberGuessingGame2
             }
             else if (userResponse == "N")
             {
-
                 PrintMethods.GameOver(userResponse, Coins);
             }
 
             else if (Coins == 0)
             {
-
                 PrintMethods.GameOver(userResponse, Coins);
-
             }
             else
             {
-                Console.WriteLine("> Please Enter a Valid Choice");
+                PrintMethods.Error();
                 PlayAgain();
             }
         }
