@@ -1,3 +1,6 @@
-﻿// See https://aka.ms/new-console-template for more information
-Console.WriteLine("Hello, World!");
+﻿using NumberGuessingGame2;
+
+PlayGame newGame = new PlayGame();
+
+newGame.Start();
 
