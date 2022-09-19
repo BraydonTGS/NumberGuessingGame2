@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Drawing;
 
+
 namespace NumberGuessingGame2
 {
     public class PlayGame
@@ -25,15 +26,13 @@ namespace NumberGuessingGame2
 
         public void Start()
         {
-            Console.WriteLine(@" +-+-+-+-+-+-+ +-+-+-+-+-+-+-+-+ +-+-+-+-+
- |N|u|m|b|e|r| |G|u|e|s|s|i|n|g| |G|a|m|e|
- +-+-+-+-+-+-+ +-+-+-+-+-+-+-+-+ +-+-+-+-+");
-            Console.WriteLine();
+            PrintMethods.PrintTitle();
             Console.WriteLine($"> You have {Coins} coins ");
             Console.WriteLine();
             Console.Write("> Please Enter a Coin! ");
             Console.ReadLine();
-            Console.Clear();
+            Console.WriteLine();
+
             int random = RandomNumber.Next(Min, Max);
             Coins -= 1;
             PlayRound(random);
@@ -41,10 +40,6 @@ namespace NumberGuessingGame2
 
         public void PlayRound(int rnd)
         {
-            Console.WriteLine(@" +-+-+-+-+-+-+ +-+-+-+-+-+-+-+-+ +-+-+-+-+
- |N|u|m|b|e|r| |G|u|e|s|s|i|n|g| |G|a|m|e|
- +-+-+-+-+-+-+ +-+-+-+-+-+-+-+-+ +-+-+-+-+");
-            Console.WriteLine();
             Console.WriteLine($"> Number of Guesses: > {Guesses} <");
             Console.WriteLine();
             Console.Write($"> Please Enter a Number between {Min} and {Max}: ");
@@ -69,42 +64,32 @@ namespace NumberGuessingGame2
 
         public void Win()
         {
-            Console.Clear();
-            Console.WriteLine(@" +-+-+-+-+-+-+ +-+-+-+-+-+-+-+-+ +-+-+-+-+
- |N|u|m|b|e|r| |G|u|e|s|s|i|n|g| |G|a|m|e|
- +-+-+-+-+-+-+ +-+-+-+-+-+-+-+-+ +-+-+-+-+");
-            Console.WriteLine();
+            PrintMethods.PrintTitle();
             Console.WriteLine($"> YOU WON THE GAME! Number of Guesses: {Guesses}");
             Console.WriteLine();
             Console.WriteLine($"> You have {Coins} coins left! ");
             Console.WriteLine();
             PlayAgain();
+
         }
 
         public void High(int rnd)
         {
-            Console.Clear();
-            Console.WriteLine(@" +-+-+-+-+-+-+ +-+-+-+-+-+-+-+-+ +-+-+-+-+
- |N|u|m|b|e|r| |G|u|e|s|s|i|n|g| |G|a|m|e|
- +-+-+-+-+-+-+ +-+-+-+-+-+-+-+-+ +-+-+-+-+");
-            Console.WriteLine();
+            PrintMethods.PrintTitle();
             Console.WriteLine("> Too low, try again. ");
-            Guesses++;
             Console.WriteLine();
+            Guesses++;
             PlayRound(rnd);
         }
 
         public void Low(int rnd)
         {
-            Console.Clear();
-            Console.WriteLine(@" +-+-+-+-+-+-+ +-+-+-+-+-+-+-+-+ +-+-+-+-+
- |N|u|m|b|e|r| |G|u|e|s|s|i|n|g| |G|a|m|e|
- +-+-+-+-+-+-+ +-+-+-+-+-+-+-+-+ +-+-+-+-+");
-            Console.WriteLine();
+            PrintMethods.PrintTitle();
             Console.WriteLine("> Too high, try again. ");
-            Guesses++;
             Console.WriteLine();
+            Guesses++;
             PlayRound(rnd);
+
         }
 
         public void PlayAgain()
